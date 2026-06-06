@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KumbhSahayak - Smart Volunteer Deployment & Workforce Optimizer</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Premium Navigation Header -->
+    <header class="main-header">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <i class="fa-solid fa-dharmachakra fa-spin" style="--fa-animation-duration: 15s;"></i>
+        </div>
+        <div class="logo-text">
+          <h1>KumbhSahayak</h1>
+          <span class="sub-logo">Smart Workforce Optimizer & Deployment Hub</span>
+        </div>
+      </div>
+      
+      <!-- Real-time Stats Grid in Header -->
+      <div class="header-stats">
+        <div class="stat-badge">
+          <span class="stat-label">System Status</span>
+          <div class="stat-value text-emerald">
+            <span class="pulse-dot"></span> LIVE
+          </div>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-label">Total Force</span>
+          <span class="stat-value" id="stat-total-volunteers">45</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-label">On Missions</span>
+          <span class="stat-value text-amber" id="stat-active-missions">0</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-label">Unresolved Alerts</span>
+          <span class="stat-value text-red" id="stat-unresolved-incidents">0</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-label">Mela Alert Level</span>
+          <span class="stat-value text-green-glow" id="stat-alert-level">NORMAL</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Grid Layout -->
+    <main class="dashboard-grid">
+      
+      <!-- COLUMN 1: Command Control & Simulation -->
+      <section class="grid-panel column-control glass-panel">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-sliders text-saffron"></i> Simulation & Control</h2>
+          <span class="panel-tag">Operator Tools</span>
+        </div>
+        
+        <div class="panel-body scrollable">
+          <!-- Preset Simulators -->
+          <div class="control-card">
+            <h3>Quick Incident Simulators</h3>
+            <p class="section-desc">Trigger pre-defined scenario incidents across the sectors to test AI allocation.</p>
+            <div class="simulator-buttons">
+              <button class="btn btn-secondary sim-trigger" data-type="medical">
+                <i class="fa-solid fa-briefcase-medical text-red"></i> Medical Emergency
+              </button>
+              <button class="btn btn-secondary sim-trigger" data-type="crowd">
+                <i class="fa-solid fa-users text-amber"></i> Sangam Crowd Surge
+              </button>
+              <button class="btn btn-secondary sim-trigger" data-type="translator">
+                <i class="fa-solid fa-language text-cyan"></i> Language Assistance
+              </button>
+              <button class="btn btn-secondary sim-trigger" data-type="lost">
+                <i class="fa-solid fa-child-reaching text-orange"></i> Lost Child Case
+              </button>
+            </div>
+          </div>
+
+          <!-- Manual Incident Reporter Form -->
+          <div class="control-card">
+            <h3>Report New Incident</h3>
+            <form id="incident-form" class="dashboard-form">
+              <div class="form-group">
+                <label for="inc-category">Incident Category</label>
+                <select id="inc-category" required>
+                  <option value="Medical First Aid">Medical First Aid</option>
+                  <option value="Crowd Management">Crowd Management</option>
+                  <option value="Information & Lost/Found">Information & Lost/Found</option>
+                  <option value="Emergency Response">Emergency Response</option>
+                  <option value="VIP Management">VIP Management</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="inc-sector">Target Sector</label>
+                  <select id="inc-sector" required>
+                    <option value="Sector 1 (Sangam Confluence)">Sector 1 (Sangam Confluence)</option>
+                    <option value="Sector 2 (Sangam Ghat East)">Sector 2 (Sangam Ghat East)</option>
+                    <option value="Sector 3 (Qila Ghat)">Sector 3 (Qila Ghat)</option>
+                    <option value="Sector 4 (Railway Transit Hub)">Sector 4 (Railway Transit Hub)</option>
+                    <option value="Sector 5 (Central Pilgrim Camp)">Sector 5 (Central Pilgrim Camp)</option>
+                    <option value="Sector 6 (Pontoon Bridge North)">Sector 6 (Pontoon Bridge North)</option>
+                    <option value="Sector 7 (Pontoon Bridge South)">Sector 7 (Pontoon Bridge South)</option>
+                    <option value="Sector 8 (Akshayavat Temple Area)">Sector 8 (Akshayavat Temple Area)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inc-severity">Severity</label>
+                  <select id="inc-severity" required>
+                    <option value="Critical" class="text-red">Critical</option>
+                    <option value="High" class="text-orange">High</option>
+                    <option value="Medium" class="text-amber" selected>Medium</option>
+                    <option value="Low" class="text-cyan">Low</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inc-language">Required Language (Optional)</label>
+                <select id="inc-language">
+                  <option value="None">Any Language (Default Hindi)</option>
+                  <option value="Telugu">Telugu</option>
+                  <option value="Tamil">Tamil</option>
+                  <option value="Bengali">Bengali</option>
+                  <option value="English">English</option>
+                  <option value="Kannada">Kannada</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inc-desc">Short Description</label>
+                <input type="text" id="inc-desc" placeholder="e.g., Elder pilgrim requires assistance near Gate 3" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                <i class="fa-solid fa-bullhorn"></i> Dispatch Alert
+              </button>
+            </form>
+          </div>
+
+          <!-- Add Volunteer Form -->
+          <div class="control-card">
+            <h3>Register New Volunteer</h3>
+            <form id="volunteer-form" class="dashboard-form">
+              <div class="form-group">
+                <label for="vol-name">Full Name</label>
+                <input type="text" id="vol-name" placeholder="Enter volunteer name" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="vol-skill">Primary Skill Set</label>
+                  <select id="vol-skill" required>
+                    <option value="Medical First Aid">Medical First Aid</option>
+                    <option value="Crowd Management">Crowd Management</option>
+                    <option value="Information & Lost/Found">Information & Lost/Found</option>
+                    <option value="Emergency Response">Emergency Response</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="vol-lang">Language Spoken</label>
+                  <select id="vol-lang" required>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Bengali">Bengali</option>
+                    <option value="English">English</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="vol-sector">Initial Sector Assignment</label>
+                <select id="vol-sector" required>
+                  <option value="Sector 1 (Sangam Confluence)">Sector 1 (Sangam Confluence)</option>
+                  <option value="Sector 2 (Sangam Ghat East)">Sector 2 (Sangam Ghat East)</option>
+                  <option value="Sector 3 (Qila Ghat)">Sector 3 (Qila Ghat)</option>
+                  <option value="Sector 4 (Railway Transit Hub)">Sector 4 (Railway Transit Hub)</option>
+                  <option value="Sector 5 (Central Pilgrim Camp)">Sector 5 (Central Pilgrim Camp)</option>
+                  <option value="Sector 6 (Pontoon Bridge North)">Sector 6 (Pontoon Bridge North)</option>
+                  <option value="Sector 7 (Pontoon Bridge South)">Sector 7 (Pontoon Bridge South)</option>
+                  <option value="Sector 8 (Akshayavat Temple Area)">Sector 8 (Akshayavat Temple Area)</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-accent btn-block">
+                <i class="fa-solid fa-user-plus"></i> Enroll Volunteer
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      
+      <!-- COLUMN 2: Live Tactical Map -->
+      <section class="grid-panel column-map glass-panel">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-map-location-dot text-emerald"></i> Live Operations Map</h2>
+          <div class="map-controls">
+            <span class="sector-status-tag" id="map-crowd-density-level">Crowding: Moderate</span>
+          </div>
+        </div>
+        
+        <div class="map-container-relative">
+          <!-- The Dynamic Interactive SVG Map -->
+          <svg id="mela-svg-map" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Glowing Gradients -->
+              <radialGradient id="sangam-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+              </radialGradient>
+              
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+              <filter id="glow-small" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- Grid Lines for Technical Command Look -->
+            <g class="grid-lines" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1">
+              <path d="M 0,100 L 1000,100 M 0,200 L 1000,200 M 0,300 L 1000,300 M 0,400 L 1000,400 M 0,500 L 1000,500 M 0,600 L 1000,600" />
+              <path d="M 100,0 L 100,700 M 200,0 L 200,700 M 300,0 L 300,700 M 400,0 L 400,700 M 500,0 L 500,700 M 600,0 L 600,700 M 700,0 L 700,700 M 800,0 L 800,700 M 900,0 L 900,700" />
+            </g>
+
+            <!-- Rivers (Background Design) -->
+            <!-- Ganges River -->
+            <path class="river-path ganges" d="M -50,150 Q 300,120 450,280 T 900,450 T 1100,550" fill="none" stroke="#1e3a8a" stroke-width="70" opacity="0.65" />
+            <path class="river-path ganges-inner" d="M -50,150 Q 300,120 450,280 T 900,450 T 1100,550" fill="none" stroke="#2563eb" stroke-width="12" opacity="0.8" />
+            
+            <!-- Yamuna River -->
+            <path class="river-path yamuna" d="M -50,600 Q 300,500 500,380 T 900,450" fill="none" stroke="#0f766e" stroke-width="50" opacity="0.55" />
+            <path class="river-path yamuna-inner" d="M -50,600 Q 300,500 500,380 T 900,450" fill="none" stroke="#0d9488" stroke-width="8" opacity="0.75" />
+
+            <!-- Sangam Confluence Glow Area -->
+            <circle cx="830" cy="435" r="90" fill="url(#sangam-glow)" />
+
+            <!-- Pontoon Bridges -->
+            <!-- Bridge 1 -->
+            <line x1="420" y1="200" x2="480" y2="340" stroke="#f59e0b" stroke-width="4" stroke-dasharray="6,4" class="pontoon-bridge" />
+            <!-- Bridge 2 -->
+            <line x1="720" y1="350" x2="730" y2="470" stroke="#f59e0b" stroke-width="4" stroke-dasharray="6,4" class="pontoon-bridge" />
+
+            <!-- Sector Regions (Interactive SVG Group) -->
+            <g id="map-sectors-group">
+              <!-- Sector 1 Sangam -->
+              <g class="sector-poly active" data-id="Sector 1 (Sangam Confluence)" data-density="high">
+                <polygon points="780,380 920,400 950,490 800,480" fill="rgba(239, 68, 68, 0.08)" stroke="rgba(239, 68, 68, 0.4)" stroke-width="1.5" />
+                <text x="860" y="440" class="sector-label">Sangam</text>
+              </g>
+
+              <!-- Sector 2 Sangam Ghat East -->
+              <g class="sector-poly" data-id="Sector 2 (Sangam Ghat East)" data-density="medium">
+                <polygon points="800,280 950,300 920,380 780,380" fill="rgba(245, 158, 11, 0.08)" stroke="rgba(245, 158, 11, 0.4)" stroke-width="1.5" />
+                <text x="860" y="340" class="sector-label">Ghat East</text>
+              </g>
+
+              <!-- Sector 3 Qila Ghat -->
+              <g class="sector-poly" data-id="Sector 3 (Qila Ghat)" data-density="low">
+                <polygon points="520,380 700,360 720,450 500,430" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" />
+                <text x="610" y="410" class="sector-label">Qila Ghat</text>
+              </g>
+
+              <!-- Sector 4 Railway Transit Hub -->
+              <g class="sector-poly" data-id="Sector 4 (Railway Transit Hub)" data-density="medium">
+                <polygon points="80,80 280,80 250,220 50,200" fill="rgba(245, 158, 11, 0.08)" stroke="rgba(245, 158, 11, 0.4)" stroke-width="1.5" />
+                <text x="160" y="145" class="sector-label">Railway Hub</text>
+              </g>
+
+              <!-- Sector 5 Central Pilgrim Camp -->
+              <g class="sector-poly" data-id="Sector 5 (Central Pilgrim Camp)" data-density="high">
+                <polygon points="300,180 500,180 460,330 260,300" fill="rgba(239, 68, 68, 0.08)" stroke="rgba(239, 68, 68, 0.4)" stroke-width="1.5" />
+                <text x="380" y="250" class="sector-label">Pilgrim Camp</text>
+              </g>
+
+              <!-- Sector 6 Pontoon Bridge North -->
+              <g class="sector-poly" data-id="Sector 6 (Pontoon Bridge North)" data-density="low">
+                <polygon points="410,80 620,80 590,170 380,170" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" />
+                <text x="500" y="130" class="sector-label">Bridge N</text>
+              </g>
+
+              <!-- Sector 7 Pontoon Bridge South -->
+              <g class="sector-poly" data-id="Sector 7 (Pontoon Bridge South)" data-density="medium">
+                <polygon points="650,220 850,220 820,320 620,320" fill="rgba(245, 158, 11, 0.08)" stroke="rgba(245, 158, 11, 0.4)" stroke-width="1.5" />
+                <text x="730" y="270" class="sector-label">Bridge S</text>
+              </g>
+
+              <!-- Sector 8 Akshayavat Temple Area -->
+              <g class="sector-poly" data-id="Sector 8 (Akshayavat Temple Area)" data-density="low">
+                <polygon points="120,480 320,460 350,600 150,620" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" />
+                <text x="230" y="540" class="sector-label">Temple Area</text>
+              </g>
+            </g>
+
+            <!-- Route Connection Paths (Invisible, used for drawing animation paths when dispatching) -->
+            <g id="map-dispatch-routes" fill="none" stroke-linecap="round">
+              <!-- Dynamically populated lines go here -->
+            </g>
+
+            <!-- Interactive Markers Layer -->
+            <!-- Incidents markers group -->
+            <g id="map-incidents-layer"></g>
+
+            <!-- Volunteer markers group -->
+            <g id="map-volunteers-layer"></g>
+          </svg>
+          
+          <!-- Map Overlay Details Panel -->
+          <div class="map-overlay-card glass-panel" id="map-sector-details">
+            <h4 id="overlay-sector-name">Hover a Sector</h4>
+            <div class="overlay-row">
+              <span>Crowd Density:</span>
+              <span id="overlay-sector-density" class="badge">--</span>
+            </div>
+            <div class="overlay-row">
+              <span>Volunteers Stationary:</span>
+              <span id="overlay-sector-volunteers" class="text-white font-bold">--</span>
+            </div>
+            <div class="overlay-row">
+              <span>Active Incidents:</span>
+              <span id="overlay-sector-incidents" class="text-white font-bold">--</span>
+            </div>
+          </div>
+          
+          <!-- Map Legend Panel -->
+          <div class="map-legend-card glass-panel">
+            <h4>Tactical Indicators</h4>
+            <div class="legend-grid">
+              <div class="legend-item"><span class="legend-color density-low"></span> Low Density</div>
+              <div class="legend-item"><span class="legend-color density-med"></span> Moderate</div>
+              <div class="legend-item"><span class="legend-color density-high"></span> Crowd Surge</div>
+              <div class="legend-item"><span class="legend-color vol-idle"></span> Vol (Standby)</div>
+              <div class="legend-item"><span class="legend-color vol-active"></span> Vol (Responding)</div>
+              <div class="legend-item"><span class="legend-color inc-pulsing"></span> Critical Alert</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulated Activity Log -->
+        <div class="activity-log-card">
+          <div class="log-title">
+            <h3><i class="fa-solid fa-clock-rotate-left"></i> Live Tactical Communications Log</h3>
+            <span class="pulse-dot-green"></span>
+          </div>
+          <div class="log-feed" id="comms-log">
+            <div class="log-item system"><span class="log-time">[18:59:02]</span> System initialized. 45 volunteer terminals connected. Matching Engine online.</div>
+            <div class="log-item info"><span class="log-time">[18:59:15]</span> Scheduled crowd scan: Sector 1 (Sangam Confluence) flags High Pilgrims Flow.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 3: Incident Feed, AI Matching & Directory -->
+      <section class="grid-panel column-feed glass-panel">
+        
+        <!-- Tab Navigation for the Right Panel -->
+        <div class="panel-tabs">
+          <button class="tab-btn active" data-tab="tab-dispatch">
+            <i class="fa-solid fa-triangle-exclamation"></i> Alerts & Dispatch
+          </button>
+          <button class="tab-btn" data-tab="tab-directory">
+            <i class="fa-solid fa-users-viewfinder"></i> Volunteers Directory
+          </button>
+        </div>
+
+        <!-- TAB CONTENT 1: ALERTS & DISPATCH CONSOLE -->
+        <div id="tab-dispatch" class="tab-content active scrollable">
+          
+          <!-- Selected Incident Analysis Panel -->
+          <div class="dispatch-console-box" id="dispatch-console">
+            <div class="console-placeholder">
+              <i class="fa-solid fa-robot fa-bounce" style="font-size: 2.5rem; color: var(--saffron);"></i>
+              <h3>AI Workforce Matching Console</h3>
+              <p>Select an unresolved incident from the feed below to calculate optimal volunteer matches in real-time.</p>
+            </div>
+            
+            <!-- Dynamic Content (Appears when incident is clicked) -->
+            <div class="console-active hidden" id="console-active-panel">
+              <div class="console-title-row">
+                <span class="badge badge-red" id="console-inc-severity">Critical</span>
+                <h3 id="console-inc-title">Medical First Aid Needed</h3>
+              </div>
+              <p class="console-desc" id="console-inc-desc">Elderly pilgrim fainting near Pontoon Bridge N.</p>
+              
+              <div class="console-meta-grid">
+                <div><i class="fa-solid fa-location-dot"></i> <span id="console-inc-sector">Sector 6</span></div>
+                <div><i class="fa-solid fa-language"></i> <span id="console-inc-lang">Language: Telugu</span></div>
+              </div>
+
+              <!-- Recommendation List -->
+              <div class="matching-results-area">
+                <h4><i class="fa-solid fa-wand-magic-sparkles text-saffron"></i> Top AI Recommended Matches</h4>
+                <div class="match-cards-container" id="match-cards-list">
+                  <!-- Match Card 1 -->
+                  <!-- Dynamically Rendered -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unresolved Incidents Header -->
+          <div class="section-title">
+            <h3>Open Incident Alerts Feed</h3>
+            <span class="alert-count-badge" id="alert-feed-count">0</span>
+          </div>
+
+          <!-- Alert Cards Feed Container -->
+          <div class="incidents-feed-list" id="incidents-feed-container">
+            <!-- Dynamically populated with alert cards -->
+            <div class="feed-empty-state">
+              <i class="fa-solid fa-circle-check text-emerald"></i>
+              <p>All sectors secured. No open alerts.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: VOLUNTEERS DIRECTORY -->
+        <div id="tab-directory" class="tab-content scrollable">
+          <div class="directory-filter-bar">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="dir-search" placeholder="Search by name, skill, or language...">
+            </div>
+            <div class="filter-dropdowns">
+              <select id="dir-filter-status">
+                <option value="All">All Statuses</option>
+                <option value="Standby">Standby (Idle)</option>
+                <option value="Responding">Responding</option>
+              </select>
+              <select id="dir-filter-skill">
+                <option value="All">All Skills</option>
+                <option value="Medical First Aid">Medical First Aid</option>
+                <option value="Crowd Management">Crowd Management</option>
+                <option value="Information & Lost/Found">Information & Lost/Found</option>
+                <option value="Emergency Response">Emergency Response</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Directory List Container -->
+          <div class="volunteers-grid-list" id="volunteers-grid-container">
+            <!-- Dynamically Rendered -->
+          </div>
+        </div>
+      </section>
+      
+    </main>
+
+    <!-- Global System Overlays (Simulating Broadcast Messages or Severe Surge warnings) -->
+    <div id="alert-broadcast-overlay" class="broadcast-banner hidden">
+      <div class="broadcast-content">
+        <i class="fa-solid fa-triangle-exclamation fa-fade"></i>
+        <span><strong>CRITICAL SECTOR WARNING:</strong> Sector 1 (Sangam Confluence) has exceeded critical threshold. Redirecting all crowd control units.</span>
+        <button class="close-broadcast-btn" onclick="document.getElementById('alert-broadcast-overlay').classList.add('hidden')">&times;</button>
+      </div>
+    </div>
+
+    <!-- Personalized Premium Footer -->
+    <footer class="app-footer">
+      <div class="footer-left">
+        <span class="sys-clock"><i class="fa-solid fa-clock"></i> Mela Local Time: <strong id="mela-time-string">19:04:41</strong></span>
+        <span class="divider">|</span>
+        <span>Node Terminal: <strong class="text-cyan">Offline (Static Fallback Active)</strong></span>
+        <span class="divider">|</span>
+        <span>AI Matching Mode: <strong class="text-emerald">High-Precision Heuristic</strong></span>
+      </div>
+      <div class="footer-center font-semibold text-glow">
+        Made with love by <span class="highlight-author">SHUBRAT MISHRA , 23BCE10340</span>
+      </div>
+      <div class="footer-right">
+        <span>&copy; 2026 Kumbh Operations Command. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Sound effect mock elements (creates professional ambient simulation clicks) -->
+  <audio id="alert-sfx" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-84.wav" preload="auto" opacity="0"></audio>
+
+  <!-- Core JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
