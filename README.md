@@ -1,4 +1,4 @@
-# KumbhSahayak 🕉️
+# KumbhSahayak 🕉️ - Expert Hire <> VIT Bhopal - Mahakumbh MP Hackathon
 ### Smart Volunteer Deployment & Workforce Optimization Platform
 
 **KumbhSahayak** is a state-of-the-art, high-fidelity operations dashboard designed to manage, route, and optimize volunteer workforces in real-time during the massive **Mahakumbh** congregation. 
