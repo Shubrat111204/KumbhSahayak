@@ -4,6 +4,8 @@
 **KumbhSahayak** is a state-of-the-art, high-fidelity operations dashboard designed to manage, route, and optimize volunteer workforces in real-time during the massive **Mahakumbh** congregation. 
 
 Built with a premium glassmorphic dark-theme design, the application provides command center operators with instant tactical maps, automated heuristic matching, and a live dispatch simulation.
+## 🖥️ Live Dashboard Preview
+![KumbhSahayak Dashboard](dashboard.png)
 
 ---
 
